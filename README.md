@@ -410,7 +410,7 @@ edge-optimization.ipynb
     → inference optimization and edge-deployment investigation
 ```
 
-## Closing Note
+
 
 This project was completed within the two-day assessment window provided by **ERIC Robotics**.
 
