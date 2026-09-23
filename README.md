@@ -317,31 +317,32 @@ The optimization experiments compare the inference behaviour of the model under 
 
 The confusion matrices below are included to look beyond the overall mAP50 and understand how the detector behaves for each class.
 
+### Edge Optimization Results
+
 <table>
 <tr>
 <td align="center">
-<img src="https://github.com/Krishna4311/Cone-Barrier-Stop-Sign-Detection-for-Navigation/blob/main/results/confusion_matrices/confusion_matrix_best_v3.png?raw=true" width="450">
-<br><b>v3 — FP32 PyTorch</b>
+<img src="./results/model_comparison/grid_FP32_PT.png" width="450">
+<br><b>FP32 PyTorch</b>
 </td>
-
 <td align="center">
-<img src="https://github.com/Krishna4311/Cone-Barrier-Stop-Sign-Detection-for-Navigation/blob/main/results/confusion_matrices/confusion_matrix_best_v3_fp16.png?raw=true" width="450">
-<br><b>v3 — FP16</b>
+<img src="./results/model_comparison/grid_FP16_ONNX.png" width="450">
+<br><b>FP16 ONNX</b>
 </td>
 </tr>
 
 <tr>
 <td align="center">
-<img src="https://github.com/Krishna4311/Cone-Barrier-Stop-Sign-Detection-for-Navigation/blob/main/results/confusion_matrices/confusion_matrix_best_v3_int8_onnx.png?raw=true" width="450">
-<br><b>v3 — INT8 ONNX</b>
+<img src="./results/model_comparison/grid_INT8_ONNX.png" width="450">
+<br><b>INT8 ONNX</b>
 </td>
-
 <td align="center">
-<img src="https://github.com/Krishna4311/Cone-Barrier-Stop-Sign-Detection-for-Navigation/blob/main/results/confusion_matrices/confusion_matrix_best_v3_int8_tflite.png?raw=true" width="450">
-<br><b>v3 — INT8 TFLite</b>
+<img src="./results/model_comparison/grid_INT8_TFLite.png" width="450">
+<br><b>INT8 TFLite</b>
 </td>
 </tr>
 </table>
+
 ---
 
 # Overall Pipeline
