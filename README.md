@@ -415,3 +415,9 @@ edge-optimization.ipynb
 This project was completed within the two-day assessment window provided by **ERIC Robotics**.
 
 The implementation represents what I was able to investigate and validate within the assessment timeframe, with the notebooks retaining the actual experiments and intermediate results rather than hiding the failed approaches that helped shape the final pipeline.
+
+## contact
+**Tarun Pandian M**
+- GitHub: [Krishna4311](https://github.com/Krishna4311)
+- Email: mtarunp@gmail.com
+- Phone: +91 8762976758
