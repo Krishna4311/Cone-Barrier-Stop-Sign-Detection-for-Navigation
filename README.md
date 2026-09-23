@@ -88,7 +88,7 @@ YOLOv8s was selected as the starting point because it provided a useful balance 
 
 Three training stages were used.
 
-### v1 — Initial Training
+# v1 — Initial Training
 
 The first model was trained on the initial combined dataset.
 
@@ -178,12 +178,65 @@ The resulting metrics were:
 | Stop Sign   |     0.912 |  0.870 |
 | **Overall** | **0.811** |      — |
 
-The progression of barrier recall was:
+## Training Results
+
+The confusion matrices below are included to look beyond the overall mAP50 and understand how the detector behaves for each class.
+
+<table>
+<tr>
+<td><img src="results/confusion_matrices/confusion_matrix_best_v3.png" width="100%"></td>
+<td><img src="results/confusion_matrices/confusion_matrix_best_v3_fp16.png" width="100%"></td>
+</tr>
+<tr>
+<td align="center"><b>v3 — FP32 PyTorch</b></td>
+<td align="center"><b>v3 — FP16</b></td>
+</tr>
+<tr>
+<td><img src="results/confusion_matrices/confusion_matrix_best_v3_int8_onnx.png" width="100%"></td>
+<td><img src="results/confusion_matrices/confusion_matrix_best_v3_int8_tflite.png" width="100%"></td>
+</tr>
+<tr>
+<td align="center"><b>v3 — INT8 ONNX</b></td>
+<td align="center"><b>v3 — INT8 TFLite</b></td>
+</tr>
+</table>
+
+### Reading the Confusion Matrices
+
+For an object detector, the confusion matrix should not be interpreted in exactly the same way as a classification confusion matrix.
+
+The important observations are:
+
+- **Diagonal detections** → objects that were correctly detected as their intended class.
+- **Background → class** → false positives, where the model predicts an object that is not present in the ground truth.
+- **Class → background** → missed detections, which is particularly important for this navigation task.
+- **Class → another class** → an object was detected but assigned the wrong category.
+
+A large `background → cone` value, for example, does not mean that the model is confusing cones with another object. It means the model is producing **false-positive cone detections on background regions**.
+
+Similarly, a large `cone → background` value means that actual cones are being missed.
+
+This distinction is important when interpreting the results. A model can have a strong mAP50 while still having particular failure modes that matter for navigation.
+
+### What the v3 Results Show
+
+The v3 model achieved:
+
+| Class | mAP50 | Recall |
+|---|---:|---:|
+| Barrier | 0.791 | 0.735 |
+| Cone | 0.730 | 0.640 |
+| Stop Sign | 0.912 | 0.870 |
+| **Overall** | **0.811** | — |
+
+The confusion matrix was therefore used together with mAP50 and recall rather than treating a single metric as the complete description of model quality.
+
+The most important progression during training was the improvement in barrier detection:
 
 ```text
-v1 → 0.373
-v2 → 0.623
-v3 → 0.735
+v1 → Barrier recall: 0.373
+v2 → Barrier recall: 0.623
+v3 → Barrier recall: 0.735
 ```
 
 The confusion matrices and validation results were used alongside mAP50 rather than relying on a single metric. In particular, they helped identify that the main limitation in the initial model was the representation of barriers rather than a general failure of the detector.
@@ -253,6 +306,35 @@ This is also why the edge section should be interpreted as an investigation of t
 
 I have previously worked with actual NVIDIA Jetson hardware for model optimization and inference benchmarking, where measuring TensorRT/FP16 performance was considerably more direct. In this assessment, however, the available Kaggle environment did not provide the same controlled edge-device setup.
 
+The optimization experiments compare the inference behaviour of the model under different precision/runtime configurations.
+
+The confusion matrices below are included to look beyond the overall mAP50 and understand how the detector behaves for each class.
+
+<table>
+<tr>
+<td align="center">
+<img src="https://github.com/Krishna4311/Cone-Barrier-Stop-Sign-Detection-for-Navigation/blob/main/results/confusion_matrices/confusion_matrix_best_v3.png?raw=true" width="450">
+<br><b>v3 — FP32 PyTorch</b>
+</td>
+
+<td align="center">
+<img src="https://github.com/Krishna4311/Cone-Barrier-Stop-Sign-Detection-for-Navigation/blob/main/results/confusion_matrices/confusion_matrix_best_v3_fp16.png?raw=true" width="450">
+<br><b>v3 — FP16</b>
+</td>
+</tr>
+
+<tr>
+<td align="center">
+<img src="https://github.com/Krishna4311/Cone-Barrier-Stop-Sign-Detection-for-Navigation/blob/main/results/confusion_matrices/confusion_matrix_best_v3_int8_onnx.png?raw=true" width="450">
+<br><b>v3 — INT8 ONNX</b>
+</td>
+
+<td align="center">
+<img src="https://github.com/Krishna4311/Cone-Barrier-Stop-Sign-Detection-for-Navigation/blob/main/results/confusion_matrices/confusion_matrix_best_v3_int8_tflite.png?raw=true" width="450">
+<br><b>v3 — INT8 TFLite</b>
+</td>
+</tr>
+</table>
 ---
 
 # Overall Pipeline
