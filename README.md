@@ -230,12 +230,10 @@ It is also important to state what this does **not** provide: the result is an a
 The resulting detections are annotated directly in the requested form:
 
 ```text
-barrier, 4.2m
-cone, 2.1m
-stop_sign, 8.7m
+label, distance in m
 ```
 
-![Detection with distance estimation]([detection_distance.png](https://github.com/Krishna4311/Cone-Barrier-Stop-Sign-Detection-for-Navigation/blob/main/detection_distance.png))
+![Detection with distance estimation](detection_distance.png)
 
 I also spent time looking into alternatives such as learned monocular depth and other geometric approaches. For the assignment timeframe, the pinhole model provided a direct way to connect the detector output with physical distance while keeping the pipeline lightweight.
 
