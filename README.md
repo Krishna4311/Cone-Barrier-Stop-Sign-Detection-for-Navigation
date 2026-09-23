@@ -185,29 +185,28 @@ The confusion matrices below are included to look beyond the overall mAP50 and u
 <table>
 <tr>
 <td align="center">
-<img src="https://raw.githubusercontent.com/Krishna4311/Cone-Barrier-Stop-Sign-Detection-for-Navigation/e71652df6830721e718be35bb8f5fa9f71fc0e3f/results/confusion_matrices/confusion%20best_v3.png" width="450">
+<img src="https://raw.githubusercontent.com/Krishna4311/Cone-Barrier-Stop-Sign-Detection-for-Navigation/e71652df6830721e718be35bb8f5fa9f71fc0e3f/results/confusion_matrices/confusion_matrix%20best_v3.png" width="450">
 <br><b>v3 — FP32 PyTorch</b>
 </td>
 
 <td align="center">
-<img src="https://raw.githubusercontent.com/Krishna4311/Cone-Barrier-Stop-Sign-Detection-for-Navigation/e71652df6830721e718be35bb8f5fa9f71fc0e3f/results/confusion_matrices/confusion%20best_v3_fp16_onnx.png" width="450">
+<img src="https://raw.githubusercontent.com/Krishna4311/Cone-Barrier-Stop-Sign-Detection-for-Navigation/e71652df6830721e718be35bb8f5fa9f71fc0e3f/results/confusion_matrices/confusion_matrix%20best_v3_fp16_onnx.png" width="450">
 <br><b>v3 — FP16 ONNX</b>
 </td>
 </tr>
 
 <tr>
 <td align="center">
-<img src="https://raw.githubusercontent.com/Krishna4311/Cone-Barrier-Stop-Sign-Detection-for-Navigation/e71652df6830721e718be35bb8f5fa9f71fc0e3f/results/confusion_matrices/confusion%20best_v3_int8_onnx.png" width="450">
+<img src="https://raw.githubusercontent.com/Krishna4311/Cone-Barrier-Stop-Sign-Detection-for-Navigation/e71652df6830721e718be35bb8f5fa9f71fc0e3f/results/confusion_matrices/confusion_matrix%20best_v3_int8_onnx.png" width="450">
 <br><b>v3 — INT8 ONNX</b>
 </td>
 
 <td align="center">
-<img src="https://raw.githubusercontent.com/Krishna4311/Cone-Barrier-Stop-Sign-Detection-for-Navigation/e71652df6830721e718be35bb8f5fa9f71fc0e3f/results/confusion_matrices/confusion%20best_v3_int8_tflite.png" width="450">
+<img src="https://raw.githubusercontent.com/Krishna4311/Cone-Barrier-Stop-Sign-Detection-for-Navigation/e71652df6830721e718be35bb8f5fa9f71fc0e3f/results/confusion_matrices/confusion_matrix%20best_v3_int8_tflite.png" width="450">
 <br><b>v3 — INT8 TFLite</b>
 </td>
 </tr>
 </table>
-
 
 ### Reading the Confusion Matrices
 
